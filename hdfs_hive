@@ -1,0 +1,51 @@
+curl -LO git_url
+
+hadoop fs -mkdir /user/inputdataset - dir creation
+
+hadoop fs -put /home/intellipaat.txt /user/input
+
+hadoop fs -put -----------copy from local to hdfs
+
+hadoop fs -get /user/output/ /home/hadoop_tp/ ---------------- copy from hdfs to local
+
+view filename ----------dispaly content
+:x --------cammand to exit view
+
+hive -----------launch hive
+
+create database ----create db in hive
+
+create table
+
+create table Olympics(
+athlete string,
+age int,
+country string,
+year int,
+closing_date string,
+sport string,
+gold int,
+silver int,
+bronze int,
+total int)
+row format delimited fields terminated by ','
+tblproperties("skip.header.line.count"="1");
+
+
+load data inpath 'file path' into table table_name---------- load from hdfs
+
+load data local inpath 'file path' into table table_name --------load from local
+
+INSERT OVERWRITE DIRECTORY '/path/to/output/dir' SELECT * FROM table WHERE id > 100; --------writting result to file 
+
+INSERT OVERWRITE DIRECTORY '/user/output/6.txt' 
+
+select distinct(country) from (select country,gold,rank() over(order by gold desc) as r from Olympics where year = 2012) as s where s.r = 1;
+
+ select country,sum(total) as tot from Olympics t1 group by country order by tot desc limit 1;
+
+
+
+mkdir -p /path-to-directory/directory-name
+
+
